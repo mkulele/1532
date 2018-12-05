@@ -1,0 +1,31 @@
+응용 프로그램 로그크기  
+REG_DWORD	MaxSize	20971520
+ 
+보안 로그크기 
+액세스가 거부되었습니다.
+
+ 
+시스템 로그 크기 
+REG_DWORD	MaxSize	20971520
+ 
+응용프로그램 로그 덮어쓰기 설정 옵션 
+REG_DWORD	Retention	0
+ 
+보안 로그 덮어쓰기 설정 옵션 
+액세스가 거부되었습니다.
+
+ 
+시스템로그 덮어쓰기 설정 옵션 
+REG_DWORD	Retention	0
+ 
+응용프로그램 로그 자동보관 설정 옵션 
+The system was unable to find the specified registry key.
+ 
+보안 로그 자동보관 설정 옵션 
+액세스가 거부되었습니다.
+
+ 
+시스템로그 자동보관 설정 옵션 
+The system was unable to find the specified registry key.
+ 
+ 
