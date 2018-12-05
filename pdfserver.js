@@ -15,16 +15,7 @@ var PdfPrinter = require('C:\\Users\\pc\\Desktop\\15501032\\node_modules\\pdfmak
 var printer = new PdfPrinter(fonts);
 var fs = require('fs');
 
- module.exports.pa = function (line) {
-    var re1 = line[0];
-    var re2 = line[1];
-    var re3 = line[2];
-    var re4 = line[3];
-    var re5 = line[4];
-    var re6 = line[5];
-    var re7 = line[6];
-
-
+exports.all = function (t,c,r) {
     var documentDefinition={
         content:[
             {
@@ -37,85 +28,253 @@ var fs = require('fs');
                     widths:[70,'*'],heights:16,
                     body:[
                         [
-                            {text:'01. Administrator 계정관리',colSpan:'2',style:'header'},''
+                            {text:t[0],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,fontSize:11},{text:'관리자 계정이 하나만 존재'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[1]}
                         ],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re1,bold:true}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[0],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[0],bold:true}
                         ],
                         //01
                         [
-                            {text:'02. Guest 계정관리',colSpan:'2',style:'header'},''
+                            {text:t[2],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,fontSize:11},{text:'관리자 계정이 비활성화'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[3]}
                         ],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re2,bold:true}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[1],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[1],bold:true}
                         ],
                         //02
                         [
-                            {text:'03. 계정 잠금 정책 설정',colSpan:'2',style:'header'},''
+                            {text:t[4],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,rowSpan:2,margin:8,fontSize:11},{text:'계정 잠금 기간 - 60분'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[5]}
                         ],
-                        ['','계정 잠금수를 원래대로 설정 - 60분'],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re3,bold:true}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[2],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[2],bold:true}
                         ],
                         //03
                         [
-                            {text:'04. 암호 정책 설정',colSpan:'2',style:'header'},''
+                            {text:t[6],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호\n기준',bold:true,rowSpan:4,margin:20,fontSize:11},'최소 암호 사용기간 1일 이상'
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[7]}
                         ],
                         [
-                            '','최대 암호 사용 기간 90일 이하'
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[3],alignment:'left'}
                         ],
                         [
-                            '','최소 암호 길이 8 문자 이상'
-                        ],
-                        [
-                            '','최근 암호 기억 12개로 설정'
-                        ],
-                        [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re4,bold:true}
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[3],bold:true}
                         ],
                         //04
                         [
-                            {text:'05. 사용자계정 컨트롤 설정',colSpan:'2',style:'header'},''
+                            {text:t[8],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,fontSize:11},{text:'사용자 계정 컨트롤(UAC) 사용'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[9]}
                         ],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re5,bold:true}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[4],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[4],bold:true}
                         ],
                         //05
                         [
-                            {text:'06. CMD 파일 권한 설정',colSpan:'2',style:'header'},''
+                            {text:t[10],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,fontSize:11},{text:'Administrator와 System 과 TrustedInstaller 그룹만 실행 권한'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[11]}
                         ],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re6,bold:true}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[5],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[5],bold:true}
                         ],
                         //06
                         [
-                            {text:'07. CMD 파일 권한 설정',colSpan:'2',style:'header'},''
+                            {text:t[12],colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,fontSize:11},{text:'홈디렉터리 권한중 Users:F 또는 Everyone:F가 없음'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[13]}
                         ],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re7,bold:true}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[6],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[6],bold:true}
                         ],
                         //07
+                        [
+                            {text:t[14],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[15]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[7],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[7],bold:true}
+                        ],
+                        //08
+                        [
+                            {text:t[16],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[17]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[8],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[8],bold:true}
+                        ],
+                        //09
+                        [
+                            {text:t[18],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[19]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[9],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[9],bold:true}
+                        ],
+                        //10
+                        [
+                            {text:t[20],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[21]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[10],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[10],bold:true}
+                        ],
+                        //11
+                        [
+                            {text:t[22],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[23]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[11],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[11],bold:true}
+                        ],
+                        //12
+                        [
+                            {text:t[24],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[25]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[12],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[12],bold:true}
+                        ],
+                        //13
+                        [
+                            {text:t[26],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[27]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[13],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[13],bold:true}
+                        ],
+                        //14
+                        [
+                            {text:t[28],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[29]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[14],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[14],bold:true}
+                        ],
+                        //15
+                        [
+                            {text:t[30],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[31]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[15],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[15],bold:true}
+                        ],
+                        //16
+                        [
+                            {text:t[32],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[33]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[16],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[16],bold:true}
+                        ],
+                        //17
+                        [
+                            {text:t[34],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[35]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[17],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[17],bold:true}
+                        ],
+                        //18
+                        [
+                            {text:t[36],colSpan:'2',style:'header'},''
+                        ],
+                        [
+                            {text:'양호 기준',bold:true,fontSize:11},{text:t[37]}
+                        ],
+                        [
+                            {text:'진단 현황',bold:true,fontSize:11},{text:c[18],alignment:'left'}
+                        ],
+                        [
+                            {text:'진단 결과',bold:true,fontSize:11},{text:r[18],bold:true}
+                        ],
+                        //19
+
 
 
 
