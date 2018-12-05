@@ -1,10 +1,12 @@
 set konyang=c:\Users\pc\Desktop\15501032\bat
 set tools=c:\Users\pc\Desktop\15501032\bat\tools
-set filename=01.txt
-set fileresult=01_r.txt
-set Number=01
+set filetitle=title.txt
+set filename=content.txt
+set fileresult=result.txt
 
 
+
+echo 01.Administrator 계정관리 > %konyang%\%filetitle%
 %tools%\net localgroup administrators > %konyang%\%filename%
 
 echo. >>%konyang%\%filename%

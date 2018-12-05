@@ -155,9 +155,10 @@ var fs = require('fs');
 
 
 
-exports.each1 = function (line,re) {
-    var line = line;
-    var re=re;
+exports.each1 = function (t,c,r) {
+   var title = t;
+   var content = c;
+   var result=r;
     var documentDefinition={
         content:[
             {
@@ -170,16 +171,16 @@ exports.each1 = function (line,re) {
                     widths:[70,'*'],heights:16,
                     body:[
                         [
-                            {text:'01. Administrator 계정관리',colSpan:'2',style:'header'},''
+                            {text:title,colSpan:'2',style:'header'},''
                         ],
                         [
                             {text:'양호 기준',bold:true,fontSize:11},{text:'관리자 계정이 하나만 존재'}
                         ],
                         [
-                            {text:'진단 현황',bold:true,fontSize:11},{text:line,bold:true,alignment:'left',}
+                            {text:'진단 현황',bold:true,fontSize:11},{text:content,bold:true,alignment:'left',}
                         ],
                         [
-                            {text:'진단 결과',bold:true,fontSize:11},{text:re,bold:true}
+                            {text:'진단 결과',bold:true,fontSize:11},{text:result,bold:true}
                         ],
                     ]
                 }

@@ -33,14 +33,17 @@
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "iconv-lite": "^0.4.24",
+    "jschardet": "^1.6.0",
     "mime": "^2.4.0",
     "mimetype": "0.0.8",
     "multer": "^1.4.1",
     "node-cmd": "^3.0.0",
+    "node-gyp": "^3.8.0",
     "nodemailer": "^4.7.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "package.json": "^2.0.1",
     "pdfmake": "^0.1.38",
+    "rebuild": "^0.1.2",
     "util": "^0.11.1"
   }
 }
