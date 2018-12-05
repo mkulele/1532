@@ -1,8 +1,8 @@
 set konyang=c:\Users\pc\Desktop\15501032\bat
 set tools=c:\Users\pc\Desktop\15501032\bat\tools
-set filename=02.txt
-set fileresult=02_r.txt
-set Number=02
+set filetitle=title.txt
+set filename=content.txt
+set fileresult=result.txt
 set tempfile=temp.txt
 						
 

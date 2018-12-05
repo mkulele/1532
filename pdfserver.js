@@ -25,9 +25,6 @@ var fs = require('fs');
     var re7 = line[6];
 
 
-
-
-
     var documentDefinition={
         content:[
             {
@@ -205,7 +202,7 @@ exports.each1 = function (t,c,r) {
     }
 
     exports.makePDF= function () {
-        var pdfDoc = printer.createPdfKitDocument(documentDefinition);
+       var pdfDoc = printer.createPdfKitDocument(documentDefinition);
         pdfDoc.pipe(fs.createWriteStream('C:\\Users\\pc\\Desktop\\15501032\\pdf\\result.pdf'));
         pdfDoc.end();
     }

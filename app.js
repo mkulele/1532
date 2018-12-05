@@ -3,6 +3,7 @@ var util = require('util');
 var fs = require('fs');
 var path = require('path');
 var mime = require('mime');
+var mimeType=require('mime-types');
 var multer=require('multer');
 var iconv = require('iconv-lite');
 var jschardet=require('jschardet');
@@ -17,14 +18,15 @@ var app = express();
 
 //views설정
 app.set('view engine','ejs');
-app.use(express.static('C:\\Users\\pc\\Desktop\\15501032\\views'));
+app.use(express.static('views'));
 app.get('/', function(req, res){
     fs.readFile('index.html','utf8', function(error, data){
         res.end(data);
     });
 });
-app.get('/01', function(req, res){
-    fs.readFile('C:\\Users\\pc\\Desktop\\15501032\\views\\01.ejs','utf8', function(error, data){
+app.get('/:fileid', function(req, res){
+    var fileId = req.params.fileid;
+    fs.readFile('C:\\Users\\pc\\Desktop\\15501032\\views\\'+fileId+'.ejs','utf8', function(error, data){
         res.end(data);
     });
 });
@@ -36,7 +38,7 @@ app.get('/01', function(req, res){
 app.get('/bat/:fileid',function(req,res){
     var fileId = req.params.fileid;
     if(fileId=='01'){
-        bat.runbat1();
+        bat.runbat(fileId);
         res.redirect('/01');
     }
     else if(fileId=='02'){
@@ -46,10 +48,8 @@ app.get('/bat/:fileid',function(req,res){
 })
 
 
-
-
 //PDF로 다운받기
-app.get('/download/:fileid', function(req, res){
+app.get('/download/:fileid', function(req, res, next){
     var fileId = req.params.fileid; //fileid = 각각의 파일을 구분하는 파일ID 값
     var origFileNm, savedFileNm, savedPath, fileSize; //DB에서 읽어올 정보들
 
@@ -67,8 +67,8 @@ app.get('/download/:fileid', function(req, res){
 
     if( fileId == '01'  ){
         //파일이름설정
-        origFileNm = '01.zip';
-        savedFileNm = 'test.zip';
+        origFileNm = '01.pdf';
+        savedFileNm = 'result.pdf';
         savedPath = __dirname+'\\pdf';
 
         var t = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\title.txt').toString();
@@ -77,17 +77,26 @@ app.get('/download/:fileid', function(req, res){
 
         pdf.each1(t,c,r);
         pdf.makePDF();
+        res.redirect('/01');
     }
 
-    var file = savedPath + '\\' + savedFileNm;
-    mimetype=mime.lookup(origFileNm);
-    res.setHeader('Content-disposition', 'attachment; filename=' + origFileNm );
-
-    res.setHeader('Content-type',mimetype);
-    var filestream = fs.createReadStream(file);
-    filestream.pipe(res);
 });
 
+
+app.get('/download_pdf/01',function(req,res,next){
+    var origFileNm, savedFileNm, savedPath, fileSize; //DB에서 읽어올 정보들
+    origFileNm = '01.pdf';
+    savedFileNm = 'result.pdf';
+    savedPath = __dirname+'\\pdf';
+
+    var file = 'C:\\Users\\pc\\Desktop\\15501032\\pdf\\result.pdf';
+    var mimetype=mimeType.lookup('C:\\Users\\pc\\Desktop\\15501032\\pdf\\result.pdf');
+    res.setHeader('Content-disposition', 'attachment; filename=' + origFileNm );
+    res.setHeader('Content-type','application/octet-stream');
+    var filestream = fs.createReadStream('C:\\Users\\pc\\Desktop\\15501032\\pdf\\result.pdf');
+    filestream.pipe(res);
+
+});
 
 
 
@@ -119,13 +128,13 @@ app.get('/email/:fileid',function(req,res){
 
     if(fileId=='01'){
         var t = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\title.txt').toString();
-        var c = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\content.txt').toString();
+        var c = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\content.txt').toString().split("\n");
         var r = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\result.txt').toString();
         var message = c+r;
 
         var mailOptions={
             from:'seminar2team@gmail.com',
-            to:'mkulele0512@gmail.com',
+            to:'15501032@o365.konyang.ac.kr',
             subject:t+'점검',
             html : c+'<br></br><h2>'+r+'</h2>'
         };
