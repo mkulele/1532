@@ -7,6 +7,7 @@ set fileresult=result.txt
 
 
 echo 01.Administrator 계정관리 > %konyang%\%filetitle%
+echo 관리자 계정이 하나만 존재 >> %konyang%\%filetitle%
 %tools%\net localgroup administrators > %konyang%\%filename%
 
 echo. >>%konyang%\%filename%

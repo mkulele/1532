@@ -1,12 +1,12 @@
 set konyang=c:\Users\pc\Desktop\15501032\bat
 set tools=c:\Users\pc\Desktop\15501032\bat\tools
-set filename=04.txt
-set fileresult=04_r.txt
-set Number=04
+set filetitle=title.txt
+set filename=content.txt
+set fileresult=result.txt
 set tempfile=temp
 
-
-					
+echo 04. 암호 정책 설정 > %konyang%\%filetitle%
+echo 최소 암호 사용기간 1일 이상 >> %konyang%\%filetitle%
 %tools%\net accounts | %tools%\find "암호" > %konyang%\%filename%
 echo. >> %konyang%\%filename%
 

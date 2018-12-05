@@ -152,8 +152,9 @@ var fs = require('fs');
 
 
 
-exports.each1 = function (t,c,r) {
-   var title = t;
+exports.each = function (t,c,r) {
+   var title = t[0];
+   var base=t[1];
    var content = c;
    var result=r;
     var documentDefinition={
@@ -171,7 +172,7 @@ exports.each1 = function (t,c,r) {
                             {text:title,colSpan:'2',style:'header'},''
                         ],
                         [
-                            {text:'양호 기준',bold:true,fontSize:11},{text:'관리자 계정이 하나만 존재'}
+                            {text:'양호 기준',bold:true,fontSize:11},{text:base}
                         ],
                         [
                             {text:'진단 현황',bold:true,fontSize:11},{text:content,bold:true,alignment:'left',}

@@ -7,6 +7,8 @@ set tempfile=temp.txt
 						
 
 			
+echo 02. Guest 계정관리 > %konyang%\%filetitle%
+echo 관리자 계정이 비활성화 >> %konyang%\%filetitle%
 %tools%\net user guest > %konyang%\%filename%
 echo. >> %konyang%\%filename%
 

@@ -37,21 +37,16 @@ app.get('/:fileid', function(req, res){
 //점검하기
 app.get('/bat/:fileid',function(req,res){
     var fileId = req.params.fileid;
-    if(fileId=='01'){
         bat.runbat(fileId);
-        res.redirect('/01');
-    }
-    else if(fileId=='02'){
-        bat.runbat2();
-        res.redirect('/02');
-    }
+        res.redirect('/'+fileId);
 })
 
 
-//PDF로 다운받기
-app.get('/download/:fileid', function(req, res, next){
+
+//PDF 만들기
+app.get('/make/:fileid', function(req, res, next){
     var fileId = req.params.fileid; //fileid = 각각의 파일을 구분하는 파일ID 값
-    var origFileNm, savedFileNm, savedPath, fileSize; //DB에서 읽어올 정보들
+    var origFileNm, savedFileNm, savedPath; //DB에서 읽어올 정보들
 
     //인코딩
     var f= fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\title.txt');
@@ -65,27 +60,29 @@ app.get('/download/:fileid', function(req, res, next){
         fs.writeFileSync("C:\\Users\\pc\\Desktop\\15501032\\bat\\result.txt",utf8r,'utf-8');
     }
 
-    if( fileId == '01'  ){
+
         //파일이름설정
-        origFileNm = '01.pdf';
+        origFileNm = fileId+'.pdf';
         savedFileNm = 'result.pdf';
         savedPath = __dirname+'\\pdf';
 
-        var t = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\title.txt').toString();
+        var t = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\title.txt').toString().split('\n');
         var c = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\content.txt').toString();
         var r = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\result.txt').toString();
 
-        pdf.each1(t,c,r);
+        pdf.each(t,c,r);
         pdf.makePDF();
-        res.redirect('/01');
-    }
-
+        res.redirect('/'+fileId);
 });
 
 
-app.get('/download_pdf/01',function(req,res,next){
-    var origFileNm, savedFileNm, savedPath, fileSize; //DB에서 읽어올 정보들
-    origFileNm = '01.pdf';
+
+
+//pdf다운
+app.get('/download/:fileid',function(req,res,next){
+    var fileId = req.params.fileid;
+    var origFileNm, savedFileNm, savedPath;
+    origFileNm = fileId+'.pdf';
     savedFileNm = 'result.pdf';
     savedPath = __dirname+'\\pdf';
 
@@ -97,6 +94,7 @@ app.get('/download_pdf/01',function(req,res,next){
     filestream.pipe(res);
 
 });
+
 
 
 
@@ -126,7 +124,7 @@ app.get('/email/:fileid',function(req,res){
         fs.writeFileSync("C:\\Users\\pc\\Desktop\\15501032\\bat\\result.txt",utf8r,'utf-8');
     }
 
-    if(fileId=='01'){
+
         var t = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\title.txt').toString();
         var c = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\content.txt').toString().split("\n");
         var r = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\result.txt').toString();
@@ -146,12 +144,8 @@ app.get('/email/:fileid',function(req,res){
             }
             smtpTransport.close();
         })
-        res.redirect('/01');
-    }
-    else if(fileId=='02'){
-        bat.runbat2();
-        res.redirect('/02');
-    }
+    res.redirect('/'+fileId);
+
 })
 
 
