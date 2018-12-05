@@ -8,10 +8,10 @@ set tempfile=temp
 echo 06. CMD 파일 권한 설정 > %konyang%\%filetitle%
 echo Administrator와 System 과 TrustedInstaller 그룹만 실행 권한 >> %konyang%\%filetitle%
 
-		 	 	 						
+
 cacls %systemroot%\system32\cmd.exe > %konyang%\%filename%
 echo. >> %konyang%\%filename%
-						
+
 cacls %systemroot%\system32\cmd.exe | %tools%\find /I /V "administrator" | %tools%\find /I /V "system:" | %tools%\find /I /V "TrustedInstaller:" > %konyang%\%tempfile%
 echo. >> %konyang%\%filename%
 
