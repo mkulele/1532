@@ -31,8 +31,8 @@ Users        C:\Users
  
 @@ 
 REG_SZ   	ScreenSaveActive	1
-The system was unable to find the specified registry key.
-The system was unable to find the specified registry key.
+REG_SZ   	ScreenSaverIsSecure	1
+REG_SZ   	ScreenSaveTimeOut	1
  
  
  
@@ -73,7 +73,8 @@ REG_DWORD	DontDisplayLastUserName	0
   
  
 @@ 
-The system was unable to find the specified registry key.
+REG_DWORD	ShutdownWithoutLogon	1
+ 
  
 @@ 
  

@@ -509,8 +509,8 @@ echo 15. 로그온하지 않은 사용자 시스템 종료 방지>> %konyang%\%filetitle%
 echo 로그온하지 않고 시스템 종료 허용'이 '사용안함'으로 설정되어 있을 경우 >> %konyang%\%filetitle%
 
 
-%tools%\reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows \CurrentVersion\Policies\System\ShutdownWithoutLogon" >> %konyang%\%filename% 
-%tools%\reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\ CurrentVersion\Policies\System\ShutdownWithoutLogon" " | %tools%\find "1"
+%tools%\reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\ShutdownWithoutLogon" >> %konyang%\%filename% 
+%tools%\reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\ShutdownWithoutLogon" " | %tools%\find "1"
 echo. >> %konyang%\%filename%
 
 
