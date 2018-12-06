@@ -177,6 +177,32 @@ app.get('/makeall/:fileid', function(req, res, next){
     res.redirect('/'+fileId);
 });
 
+//PDF 만들기_819all
+app.get('/make819/:fileid', function(req, res, next){
+    var fileId = req.params.fileid; //fileid = 각각의 파일을 구분하는 파일ID 값
+    var origFileNm, savedFileNm, savedPath; //DB에서 읽어올 정보들
+
+    //인코딩
+    var f= fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\alltitle.txt');
+    if(jschardet.detect(f).encoding=='EUC-KR'){
+        var ft=fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\alltitle.txt',"binary");
+        var fc=fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\allcontent.txt',"binary");
+        var fr=fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\allresult.txt',"binary");
+        var utf8t=iconv.decode(ft,"euc-kr"); var utf8c=iconv.decode(fc,"euc-kr"); var utf8r=iconv.decode(fr,"euc-kr");
+        fs.writeFileSync("C:\\Users\\pc\\Desktop\\15501032\\bat\\alltitle.txt",utf8t,'utf-8');
+        fs.writeFileSync("C:\\Users\\pc\\Desktop\\15501032\\bat\\allcontent.txt",utf8c,'utf-8');
+        fs.writeFileSync("C:\\Users\\pc\\Desktop\\15501032\\bat\\allresult.txt",utf8r,'utf-8');
+    }
+
+    var t = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\alltitle.txt').toString().split('\n');
+    var c = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\allcontent.txt').toString().split('@@');
+    var r = fs.readFileSync('C:\\Users\\pc\\Desktop\\15501032\\bat\\allresult.txt').toString().split('\n');
+
+    pdf.all819(t,c,r);
+    pdf.makePDF();
+    res.redirect('/'+fileId);
+});
+
 
 
 
